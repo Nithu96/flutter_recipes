@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:recipes/foodtab.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -7,7 +9,16 @@ class DashboardPage extends StatefulWidget {
   _DashboardPageState createState() => _DashboardPageState();
 }
 
-class _DashboardPageState extends State<DashboardPage> {
+class _DashboardPageState extends State<DashboardPage> with SingleTickerProviderStateMixin {
+  late TabController tabController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    tabController = TabController(vsync: this, length: 4);
+  }
+
   @override
   Widget build(BuildContext context) {
     //navigation and image
@@ -47,18 +58,15 @@ class _DashboardPageState extends State<DashboardPage> {
               padding: const EdgeInsets.only(left:15.0),
               child:Text(
                 'SEARCH FOR',
-                // style: GoogleFonts.notoSans(
-                //   fontWeight: FontWeight.w800, fontSize: 27.0),
-                style: TextStyle(
-                    fontWeight: FontWeight.w800, fontSize: 27.0
+                style: GoogleFonts.notoSans(
+                  fontWeight: FontWeight.w800, fontSize: 27.0),
                 ),
               ),
-          ),
           Padding(
             padding: const EdgeInsets.only(left:15.0),
             child:Text(
               'RECIPES',
-              style: TextStyle(
+              style: GoogleFonts.notoSans(
                 fontWeight: FontWeight.w800, fontSize: 27.0
               ),
             ),
@@ -74,7 +82,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   child: TextField(
                     decoration: InputDecoration(
                         hintText: 'Search',
-                        // hintStyle: GoogleFonts.notoSans(fontSize: 14.0),
+                        hintStyle: GoogleFonts.notoSans(fontSize: 14.0),
                         border: InputBorder.none,
                         fillColor: Colors.grey.withOpacity(0.5),
                         prefixIcon: Icon(Icons.search, color: Colors.grey)),
@@ -84,7 +92,7 @@ class _DashboardPageState extends State<DashboardPage> {
             padding: const EdgeInsets.only(left: 15.0),
             child: Text(
               'Recommended',
-              style: TextStyle(
+              style: GoogleFonts.notoSans(
                   fontWeight: FontWeight.w500, fontSize: 18.0),
             ),
           ),
@@ -103,6 +111,34 @@ class _DashboardPageState extends State<DashboardPage> {
                 ],
               )),
           SizedBox(height: 10.0),
+          Padding(
+              padding: EdgeInsets.only(left: 15.0),
+              child: TabBar(
+                  controller: tabController,
+                  isScrollable: true,
+                  indicatorColor: Colors.transparent,
+                  labelColor: Colors.black,
+                  unselectedLabelColor: Colors.grey.withOpacity(0.5),
+                  labelStyle: GoogleFonts.notoSans(
+                      fontSize: 16.0, fontWeight: FontWeight.w700),
+                  unselectedLabelStyle: TextStyle(
+                      fontSize: 12.0, fontWeight: FontWeight.w500),
+                  tabs: [
+                    Tab(child: Text('FEATURED')),
+                    Tab(child: Text('COMBO')),
+                    Tab(child: Text('FAVORITES')),
+                    Tab(child: Text('RECOMMENDED')),
+                  ]
+              )),
+          Container(
+              height: MediaQuery.of(context).size.height - 450.0,
+              child: TabBarView(controller: tabController, children: [
+                FoodTab(),
+                FoodTab(),
+                FoodTab(),
+                FoodTab(),
+              ]
+          ))
         ],
       ),
     );
@@ -140,11 +176,11 @@ class _DashboardPageState extends State<DashboardPage> {
                     SizedBox(height: 25.0),
                     Text(
                       foodName,
-                      style: TextStyle(
+                      style: GoogleFonts.notoSans(
                           fontSize: 17.0, color: textColor),
                     ),
                     Text('\$' + price,
-                        style: TextStyle(
+                        style: GoogleFonts.notoSans(
                             fontSize: 17.0, color: textColor))
                   ],
                 ))));
