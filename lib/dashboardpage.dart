@@ -80,8 +80,73 @@ class _DashboardPageState extends State<DashboardPage> {
                         prefixIcon: Icon(Icons.search, color: Colors.grey)),
                   ))),
           SizedBox(height: 20.0),
+          Padding(
+            padding: const EdgeInsets.only(left: 15.0),
+            child: Text(
+              'Recommended',
+              style: TextStyle(
+                  fontWeight: FontWeight.w500, fontSize: 18.0),
+            ),
+          ),
+          SizedBox(height: 15.0),
+          Container(
+              height: 200.0,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  _buildListItem('Hamburg', 'assets/images/burger.png', '21',
+                      Color(0xFFFFE9C6), Color(0xFFDA9551)),
+                  _buildListItem('Chips', 'assets/images/fries.png', '15',
+                      Color(0xFFC2E3FE), Color(0xFF6A8CAA)),
+                  _buildListItem('Donuts', 'assets/images/doughnut.png', '15',
+                      Color(0xFFD7FADA), Color(0xFF56CC7E)),
+                ],
+              )),
+          SizedBox(height: 10.0),
         ],
       ),
     );
+  }
+
+  _buildListItem(String foodName, String imgPath, String price, Color bgColor,
+      Color textColor) {
+    return Padding(
+        padding: EdgeInsets.only(left: 15.0),
+        child: InkWell(
+            onTap: () {
+              //ToDo
+              // Navigator.of(context).push(MaterialPageRoute(
+              //     builder: (context) => BurgerPage(heroTag: foodName, foodName: foodName, pricePerItem: price, imgPath: imgPath)
+              // ));
+            },
+            child: Container(
+                height: 175.0,
+                width: 150.0,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0), color: bgColor),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Hero(
+                        tag: foodName,
+                        child: Container(
+                            height: 75.0,
+                            width: 75.0,
+                            decoration: BoxDecoration(
+                                color: Colors.white, shape: BoxShape.circle),
+                            child: Center(
+                                child: Image.asset(imgPath,
+                                    height: 50.0, width: 50.0)))),
+                    SizedBox(height: 25.0),
+                    Text(
+                      foodName,
+                      style: TextStyle(
+                          fontSize: 17.0, color: textColor),
+                    ),
+                    Text('\$' + price,
+                        style: TextStyle(
+                            fontSize: 17.0, color: textColor))
+                  ],
+                ))));
   }
 }
