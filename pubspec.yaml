@@ -55,6 +55,10 @@ flutter:
     - assets/images/doughnut.png
     - assets/images/hotdog.png
     - assets/images/pizza.png
+    - assets/images/cheese.png
+    - assets/images/popcorn.png
+    - assets/images/taco.png
+    - assets/images/sandwich.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

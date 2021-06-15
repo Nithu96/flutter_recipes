@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recipes/burgerpage.dart';
 import 'package:recipes/foodtab.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -150,10 +151,9 @@ class _DashboardPageState extends State<DashboardPage> with SingleTickerProvider
         padding: EdgeInsets.only(left: 15.0),
         child: InkWell(
             onTap: () {
-              //ToDo
-              // Navigator.of(context).push(MaterialPageRoute(
-              //     builder: (context) => BurgerPage(heroTag: foodName, foodName: foodName, pricePerItem: price, imgPath: imgPath)
-              // ));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => BurgerPage(heroTag: foodName, foodName: foodName, pricePerItem: price, imgPath: imgPath)
+              ));
             },
             child: Container(
                 height: 175.0,
