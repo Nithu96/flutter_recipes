@@ -57,6 +57,11 @@ class _FoodTabState extends State<FoodTab> {
                       //     spacing: 0.0),
                       Row(
                         children: <Widget>[
+                          Icon(
+                            Icons.star,
+                            color: Colors.deepOrangeAccent.withOpacity(0.5),
+                            size: 15.0,
+                          ),
                           Text(
                             '\$' + price,
                             style: GoogleFonts.notoSans(
@@ -66,6 +71,7 @@ class _FoodTabState extends State<FoodTab> {
                             ),
                           ),
                           SizedBox(width: 3.0),
+
                           Text(
                             '\$' + '18',
                             style: GoogleFonts.lato(
